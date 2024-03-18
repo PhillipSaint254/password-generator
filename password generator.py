@@ -5,7 +5,7 @@ import string
 import math
 
 
-def user_input_checker(choice):
+def checker(choice):
     acceptable = ["y", 'n', 'yes', 'no']
 
     if choice.lower() in acceptable:
@@ -21,10 +21,6 @@ def mixer(pass_value):
         random.shuffle(pass_value)
         return ''.join(pass_value)
     return ''
-
-
-def weight(min_num, max_num):
-    return random.uniform(min_num, max_num)
 
 
 def generate_password(upper, lower, numbers, special, min_len, max_len):
@@ -45,17 +41,9 @@ def generate_password(upper, lower, numbers, special, min_len, max_len):
             print("Password unable to generate since too small minimum length was chosen")
             return ''
 
-        # weight calculation
-        upper_weight = weight(.25, .3)
-        digits_weight = weight(.285, .325)
-        special_weight = weight(.15, .2)
-
-        len_upper = round(pass_len*upper_weight) if pass_len * \
-            upper_weight > 1 else 1
-        len_digits = int(pass_len*digits_weight) if pass_len * \
-            digits_weight > 1 else 1
-        len_special = int(pass_len*special_weight) if pass_len * \
-            special_weight > 1 else 1
+        len_upper = round(pass_len*.25) if pass_len*.25 > 1 else 1
+        len_digits = int(pass_len*.3) if pass_len*.3 > 1 else 1
+        len_special = int(pass_len*.15) if pass_len*.15 > 1 else 1
         len_lower = pass_len - (len_upper+len_digits+len_special) if pass_len - \
             (len_upper+len_digits+len_special) > 0 else 1
 
@@ -64,13 +52,8 @@ def generate_password(upper, lower, numbers, special, min_len, max_len):
             print("Password unable to generate since too small minimum length was chosen")
             return ''
 
-        digits_weight = weight(.285, .325)
-        special_weight = weight(.15, .2)
-
-        len_digits = int(pass_len*digits_weight) if pass_len * \
-            digits_weight > 1 else 1
-        len_special = int(pass_len*special_weight) if pass_len * \
-            special_weight > 1 else 1
+        len_digits = int(pass_len*.25) if pass_len*.25 > 1 else 1
+        len_special = int(pass_len*.25) if pass_len*.25 > 1 else 1
         len_lower = pass_len - \
             (len_digits+len_special) if pass_len - \
             (len_digits+len_special) > 0 else 1
@@ -80,13 +63,8 @@ def generate_password(upper, lower, numbers, special, min_len, max_len):
             print("Password unable to generate since too small minimum length was chosen")
             return ''
 
-        digits_weight = weight(.285, .325)
-        special_weight = weight(.15, .2)
-
-        len_digits = int(pass_len*digits_weight) if pass_len * \
-            digits_weight > 1 else 1
-        len_special = int(pass_len*special_weight) if pass_len * \
-            special_weight > 1 else 1
+        len_digits = int(pass_len*.25) if pass_len*.25 > 1 else 1
+        len_special = int(pass_len*.25) if pass_len*.25 > 1 else 1
         len_upper = pass_len - \
             (len_digits+len_special) if pass_len - \
             (len_digits+len_special) > 0 else 1
@@ -96,13 +74,8 @@ def generate_password(upper, lower, numbers, special, min_len, max_len):
             print("Password unable to generate since too small minimum length was chosen")
             return ''
 
-        upper_weight = weight(.25, .3)
-        digits_weight = weight(.285, .325)
-
-        len_upper = round(pass_len*upper_weight) if pass_len * \
-            upper_weight > 1 else 1
-        len_digits = int(pass_len*digits_weight) if pass_len * \
-            digits_weight > 1 else 1
+        len_upper = round(pass_len*.3) if pass_len*.3 > 1 else 1
+        len_digits = int(pass_len*.3) if pass_len*.3 > 1 else 1
         len_lower = pass_len - \
             (len_digits+len_upper) if pass_len - \
             (len_digits+len_upper) > 0 else 1
@@ -112,13 +85,8 @@ def generate_password(upper, lower, numbers, special, min_len, max_len):
             print("Password unable to generate since too small minimum length was chosen")
             return ''
 
-        upper_weight = weight(.285, .325)
-        special_weight = weight(.285, .325)
-
-        len_upper = round(pass_len*upper_weight) if pass_len * \
-            upper_weight > 1 else 1
-        len_special = int(pass_len*special_weight) if pass_len * \
-            special_weight > 1 else 1
+        len_upper = round(pass_len*.3) if pass_len*.5 > 1 else 1
+        len_special = int(pass_len*.3) if pass_len*.15 > 1 else 1
         len_lower = pass_len - \
             (len_digits+len_upper) if pass_len - \
             (len_digits+len_upper) > 0 else 1
@@ -128,10 +96,7 @@ def generate_password(upper, lower, numbers, special, min_len, max_len):
             print("Password unable to generate since too small minimum length was chosen")
             return ''
 
-        upper_weight = weight(.385, .425)
-
-        len_upper = round(pass_len*upper_weight) if pass_len * \
-            upper_weight > 1 else 1
+        len_upper = round(pass_len*.4) if pass_len*.4 > 1 else 1
         len_lower = pass_len - len_upper if pass_len - len_upper > 0 else 1
 
     elif lower and numbers:
@@ -139,10 +104,7 @@ def generate_password(upper, lower, numbers, special, min_len, max_len):
             print("Password unable to generate since too small minimum length was chosen")
             return ''
 
-        digits_weight = weight(.3, .38)
-
-        len_digits = int(pass_len*digits_weight) if pass_len * \
-            digits_weight > 1 else 1
+        len_digits = int(pass_len*.35) if pass_len*.35 > 1 else 1
         len_lower = pass_len - len_digits if pass_len - len_digits > 0 else 1
 
     elif lower and special:
@@ -235,22 +197,22 @@ maxLen = int(input("Enter password maximum length eg 10: "))
 upper = input(
     "Enrter Y [for yes] or N [for no]. Should I include upper case letters in the password: ").strip()
 
-user_input_checker(upper)
+checker(upper)
 
 lower = input(
     "Enrter Y [for yes] or N [for no]. Should I include lower case letters in the password: ").strip()
 
-user_input_checker(lower)
+checker(upper)
 
 numbers = input(
     "Enrter Y [for yes] or N [for no]. Should I include numbers in the password: ").strip()
 
-user_input_checker(numbers)
+checker(upper)
 
 special = input(
     "Enrter Y [for yes] or N [for no]. Should I include special characters in the password: ").strip()
 
-user_input_checker(special)
+checker(upper)
 
 upper = True if upper.lower() == "y" or upper.lower() == "yes" else False
 lower = True if lower.lower() == "y" or lower.lower() == "yes" else False
