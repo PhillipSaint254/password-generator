@@ -218,6 +218,10 @@ def generate_password(upper, lower, numbers, special, min_len, max_len):
 
         len_digits = pass_len
 
+    else:
+        print("You did not provide the characters to be included")
+        return ''
+
     pass_string = ''.join(random.choice(string.ascii_lowercase)
                           for i in range(len_lower))
     pass_string = mixer(pass_string)
@@ -246,22 +250,22 @@ minLen = int(input("Enter password minimum length eg 6: "))
 maxLen = int(input("Enter password maximum length eg 10: "))
 
 upper = input(
-    "Enrter Y [for yes] or N [for no]. Should I include upper case letters in the password: ").strip()
+    "Enter Y [for yes] or N [for no]. Should I include upper case letters in the password: ").strip()
 
 user_input_checker(upper)
 
 lower = input(
-    "Enrter Y [for yes] or N [for no]. Should I include lower case letters in the password: ").strip()
+    "Enter Y [for yes] or N [for no]. Should I include lower case letters in the password: ").strip()
 
 user_input_checker(lower)
 
 numbers = input(
-    "Enrter Y [for yes] or N [for no]. Should I include numbers in the password: ").strip()
+    "Enter Y [for yes] or N [for no]. Should I include numbers in the password: ").strip()
 
 user_input_checker(numbers)
 
 special = input(
-    "Enrter Y [for yes] or N [for no]. Should I include special characters in the password: ").strip()
+    "Enter Y [for yes] or N [for no]. Should I include special characters in the password: ").strip()
 
 user_input_checker(special)
 
