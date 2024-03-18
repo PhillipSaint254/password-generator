@@ -10,3 +10,4 @@
       * At every stage (as per character to be included) of password generation, the password string created is subjected to the mixer function
       * This ensures that it is very hard if not impossible for a hacker to determine the posioning of a character even if he had all characters used in the password
       * At the end, return the generated password to the user
+   -  Incase of any age case or failed logic in the generation process, return empty string
